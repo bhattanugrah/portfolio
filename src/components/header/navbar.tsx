@@ -1,51 +1,44 @@
 import { useEffect, useState } from "react";
 import { cn } from "../../utils/cn";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
+import { Menu } from "../ui/navbar-menu";
 
 function Navbar({ className }: { className?: string }) {
-    const [active, setActive] = useState<string | null>(null);
+    // const [active, setActive] = useState<string | null>(null);
     const [scrollY, setScrollY] = useState(0);
-
 
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [])
-
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-      <div
-        className={cn("fixed text-white top-1/2 inset-x-0 max-w-2xl mx-auto z-50 navbar", className)}
-      >
-        {scrollY > 0 &&
-            <Menu setActive={setActive}>
-                <div className="flex gap-3 justify-evenly">
-                    <div>
-                        <a href="#about_section">
-                            About
-                        </a>
+        <div
+            className={cn(
+                "fixed text-white top-1/2 inset-x-0 max-w-2xl mx-auto z-50 navbar",
+                className
+            )}
+        >
+            {scrollY > 0 && (
+                <Menu>
+                    <div className="flex gap-3 justify-evenly">
+                        <div>
+                            <a href="#about_section">About</a>
+                        </div>
+                        <div>
+                            <a href="projects">Projects</a>
+                        </div>
+                        <div>
+                            <a href="skills">Skills</a>
+                        </div>
+                        <div>
+                            <a href="contact">Contact</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="projects">
-                            Projects
-                        </a>
-                    </div>
-                    <div>
-                        <a href="skills">
-                            Skills
-                        </a>
-                    </div>
-                    <div>
-                        <a href="contact">
-                            Contact
-                        </a>
-                    </div>
-                </div>
-                {/* <MenuItem setActive={setActive} active={active} item="About">
+                    {/* <MenuItem setActive={setActive} active={active} item="About">
                     <div className="flex flex-col space-y-4 text-sm text-white">
                         <HoveredLink href="/web-dev">Web Development</HoveredLink>
                         <HoveredLink href="/interface-design">Interface Design</HoveredLink>
@@ -89,9 +82,9 @@ function Navbar({ className }: { className?: string }) {
                     <HoveredLink href="/enterprise">Enterprise</HoveredLink>
                     </div>
                 </MenuItem> */}
-            </Menu>
-        }
-      </div>
+                </Menu>
+            )}
+        </div>
     );
 }
 

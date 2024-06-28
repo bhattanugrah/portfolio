@@ -1,7 +1,7 @@
 "use client";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
-export function Card({ data }: { data: { name: string } }) {
+export function Card({ data }: { data: { name: string; image: string } }) {
     return (
         <CardContainer className="inter-var">
             <CardBody className="relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2]  md:w-[20rem] sm:w-[30rem] h-full rounded-xl p-6 border ">

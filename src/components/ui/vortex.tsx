@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "../../utils/cn";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
 
@@ -42,8 +45,10 @@ export const Vortex = (props: VortexProps) => {
     let particleProps = new Float32Array(particlePropsLength);
     let center: [number, number] = [0, 0];
 
+    //@ts-ignore
     const HALF_PI: number = 0.5 * Math.PI;
     const TAU: number = 2 * Math.PI;
+    //@ts-ignore
     const TO_RAD: number = Math.PI / 180;
     const rand = (n: number): number => n * Math.random();
     const randRange = (n: number): number => n - rand(2 * n);
@@ -187,6 +192,7 @@ export const Vortex = (props: VortexProps) => {
 
     const resize = (
         canvas: HTMLCanvasElement,
+        //@ts-ignore
         ctx?: CanvasRenderingContext2D
     ) => {
         const { innerWidth, innerHeight } = window;
